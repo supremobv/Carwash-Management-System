@@ -1,0 +1,3 @@
+@extends('layouts.app')
+@section('title','Activity log')
+@section('content')<div class="page-head"><div><div class="eyebrow">ACCOUNTABILITY BUILT IN</div><h1>A history you can follow.</h1><p>Key changes and the people behind them.</p></div></div><section class="panel"><div class="table-wrap"><table><thead><tr><th>When</th><th>Team member</th><th>Action</th><th>Record</th><th>IP address</th></tr></thead><tbody>@forelse($logs as $log)<tr><td>{{ $log->created_at }}</td><td>{{ $log->staff??'System' }}</td><td>{{ $log->action }}</td><td>{{ $log->subject }}</td><td>{{ $log->ip_address }}</td></tr>@empty<tr><td colspan="5" class="empty">Activity will appear here as you use the system.</td></tr>@endforelse</tbody></table></div>{{ $logs->links() }}</section>@endsection
